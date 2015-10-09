@@ -14,14 +14,21 @@ Package.registerBuildPlugin({
   ],
   sources: ['lib/compile-svg.js'],
   npmDependencies: {
-    "svg-sprite": "1.2.10"
+    "svg-sprite": "1.2.11"
   }
 });
 
 Package.onUse(function (api) {
 
-  api.use('isobuild:compiler-plugin@1.0.0');
+  api.use([
+    'standard-app-packages',
+    'isobuild:compiler-plugin@1.0.0'
+  ]);
 
-  api.addFiles("lib/svg.css", "client");
+  api.addFiles([
+    // "lib/svg.html", // alternate method for helper, not used
+    "lib/helper.js",
+    "lib/svg.css"
+  ], "client");
 
 });
